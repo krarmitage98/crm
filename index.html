@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#29282b">
+  <meta name="referrer" content="origin">
+  <title>Workgroup Contacts</title>
+  <link rel="icon" href="assets/favicon-32.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="./" aria-label="Workgroup Contacts home">
+        <img src="assets/workgroup-logo-white.png" alt="Workgroup">
+        <span>CONTACTS</span>
+      </a>
+
+      <nav id="primaryNav" aria-label="Contact workspace navigation">
+        <p class="nav-label">Workspace</p>
+        <button class="active" data-view="overview"><span>⌂</span> Overview</button>
+        <button data-view="event-contacts"><span>◎</span> Event contacts</button>
+        <button data-view="speakers"><span>◇</span> Speakers</button>
+        <button data-view="sponsors"><span>▦</span> Sponsors</button>
+        <p class="nav-label">Directory</p>
+        <button data-view="people"><span>◉</span> All people</button>
+        <button data-view="organisations"><span>▤</span> Organisations</button>
+        <button data-view="sponsor-directory"><span>◆</span> Sponsor directory</button>
+        <button data-view="segments"><span>≡</span> Segments</button>
+        <button data-view="enrichment"><span>✦</span> AI enhancer</button>
+        <button data-view="messages"><span>↗</span> Email</button>
+        <button data-view="quality"><span>✓</span> Data quality <b id="qualityCount">4</b></button>
+        <p class="nav-label">Events</p>
+        <div class="event-list-nav" id="eventGroupNav"></div>
+        <p class="nav-label">Connection</p>
+        <button data-view="eventflow"><span>↗</span> Eventfrog</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <i></i>
+        <div><strong>Workgroup workspace</strong><span>CRM foundation · preview</span><a href="https://www.logo.dev" target="_blank" rel="noreferrer">Logos provided by Logo.dev</a></div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+        <div class="page-heading">
+          <p id="pageEyebrow">Event relationships</p>
+          <h1 id="pageTitle">Contact overview</h1>
+        </div>
+        <div class="event-switcher-wrap">
+          <label for="eventSwitcher">Working event</label>
+          <select id="eventSwitcher" aria-label="Choose working event"></select>
+        </div>
+        <div class="top-actions">
+          <label class="search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search people or organisations"></label>
+          <button class="connection-button" id="crmConnection" data-crm-account><i></i><span>Local preview</span></button>
+          <button class="button primary" data-add-menu>+ Add</button>
+        </div>
+      </header>
+
+      <section class="view" id="view" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot" class="toast-root" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="supabase-adapter.js"></script>
+  <script src="organisation-matching.js"></script>
+  <script src="csv-import.js"></script>
+  <script src="enrichment-adapter.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

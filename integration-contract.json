@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workgroup Contacts event bundle for Eventfrog",
+  "type": "object",
+  "required": ["eventflowEventId", "generatedAt", "summary", "contacts", "sponsors", "segments"],
+  "properties": {
+    "eventflowEventId": {
+      "type": "string",
+      "description": "Permanent Eventfrog event identifier"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "object",
+      "required": ["totalContacts", "confirmedContacts", "speakerCount", "confirmedSponsorCount"],
+      "properties": {
+        "totalContacts": { "type": "integer" },
+        "confirmedContacts": { "type": "integer" },
+        "speakerCount": { "type": "integer" },
+        "confirmedSponsorCount": { "type": "integer" }
+      }
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["contactId", "fullName", "eventRole", "eventStatus"],
+        "properties": {
+          "contactId": { "type": "string" },
+          "fullName": { "type": "string" },
+          "jobTitle": { "type": "string" },
+          "email": { "type": "string" },
+          "headshotAssetUrl": { "type": "string" },
+          "organisationId": { "type": "string" },
+          "organisationName": { "type": "string" },
+          "eventRole": { "type": "string" },
+          "isModerator": {
+            "type": "boolean",
+            "description": "May be true alongside any main event role"
+          },
+          "isPanelist": {
+            "type": "boolean",
+            "description": "May be true alongside any main event role"
+          },
+          "eventStatus": { "type": "string" },
+          "workgroup": { "type": "string" },
+          "owner": { "type": "string" },
+          "lastInteractionAt": { "type": "string" }
+        }
+      }
+    },
+    "sponsors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sponsorshipId", "organisationId", "organisationName", "stage"],
+        "properties": {
+          "sponsorshipId": { "type": "string" },
+          "organisationId": { "type": "string" },
+          "organisationName": { "type": "string" },
+          "logoAssetUrl": { "type": "string" },
+          "stage": { "type": "string" },
+          "category": { "type": "string" },
+          "owner": { "type": "string" }
+        }
+      }
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["segmentId", "name", "contactCount"],
+        "properties": {
+          "segmentId": { "type": "string" },
+          "name": { "type": "string" },
+          "purpose": { "type": "string" },
+          "contactCount": { "type": "integer" }
+        }
+      }
+    }
+  }
+}
